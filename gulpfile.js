@@ -1,12 +1,13 @@
 const Webpack = require("webpack");
 const gulp = require("gulp");
-const webpack = require("gulp-webpack");
+const webpack = require('webpack-stream');
 const del = require("del");
 const run = require("run-sequence");
 const TerserPlugin = require("terser-webpack-plugin");
 
-gulp.task("clean", () => {
+gulp.task("clean", done => {
   del(["./dist", "./docs/Poppy"]);
+  done();
 });
 
 const webpackConfig = minimize => ({
@@ -47,16 +48,23 @@ const webpackConfig = minimize => ({
 });
 
 gulp.task("script", () => {
-  gulp
+  return gulp
     .src("./src/Poppy.js")
     .pipe(webpack(webpackConfig(false), Webpack))
     .pipe(gulp.dest("./dist"))
+    .pipe(gulp.dest("./docs/Poppy"));
+});
+
+gulp.task("script-min", () => {
+  return gulp
+    .src("./src/Poppy.js")
     .pipe(webpack(webpackConfig(true), Webpack))
     .pipe(gulp.dest("./dist"))
     .pipe(gulp.dest("./docs/Poppy"));
 });
 
-gulp.task("default", ["clean"], () => {
-  run("script");
-  gulp.watch("./src/Poppy.js", ["script"]);
+gulp.task("build", gulp.series("clean", "script", "script-min"), done => done());
+
+gulp.task("default", () => {
+  return gulp.watch("./src/Poppy.js", gulp.series("clean", "script"));
 });
