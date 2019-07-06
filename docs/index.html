@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Simple, Multipurpose Open Source Pop-in Messages"
+    />
+
+    <title>Poppy JS - Simple, Multipurpose Open Source Pop-in Messages</title>
+
+    <meta property="og:title" content="Poppy JS" />
+    <meta property="og:url" content="https://github.com/apvarun/poppyjs" />
+    <meta
+      property="og:image"
+      content="https://github.com/apvarun/poppyjs/raw/master/docs/readme-logo.png"
+    />
+    <meta
+      property="og:description"
+      content="Simple, Multipurpose Open Source Pop-in Messages"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .container {
+        max-width: 960px;
+      }
+
+      /*
+      * Custom translucent site header
+      */
+
+      .site-header {
+        background-color: rgba(0, 0, 0, 1);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+      }
+
+      .site-header a {
+        color: #999;
+        transition: ease-in-out color 0.15s;
+      }
+
+      .site-header a:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      /* .product-device {
+        position: absolute;
+        right: 10%;
+        bottom: -30%;
+        width: 300px;
+        height: 540px;
+        background-color: #333;
+        border-radius: 21px;
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+      }
+
+      .product-device::before {
+        position: absolute;
+        top: 10%;
+        right: 10px;
+        bottom: 10%;
+        left: 10px;
+        content: "";
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+      } */
+
+      /* .product-device-2 {
+        top: -25%;
+        right: auto;
+        bottom: 0;
+        left: 5%;
+        background-color: #e5e5e5;
+      } */
+
+      /*
+      * Extra utilities
+      */
+
+      .flex-equal > * {
+        -ms-flex: 1;
+        flex: 1;
+      }
+
+      @media (min-width: 768px) {
+        .flex-md-equal > * {
+          -ms-flex: 1;
+          flex: 1;
+        }
+      }
+
+      .overflow-hidden {
+        overflow: hidden;
+      }
+
+      .cursor-pointer {
+        cursor: pointer;
+      }
+      .mw-img {
+        max-width: 300px;
+      }
+    </style>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <script src="./Poppy/Poppy.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="site-header sticky-top py-1">
+      <div
+        class="container d-flex flex-column flex-md-row justify-content-between"
+      >
+        <a class="py-2" href="/poppyjs">
+          Poppy JS
+        </a>
+        <div>
+          <a class="py-2 px-2 d-none d-md-inline-block" href="docs.html">Docs</a>
+          <a
+            class="py-2 px-4 d-none d-md-inline-block"
+            target="_blank"
+            rel="noopener"
+            href="https://github.com/apvarun/poppyjs"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+    >
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-bold">Poppy JS</h1>
+        <p class="lead font-weight-normal">
+          Simple, Multipurpose Open Source Pop-in Messages for marketers,
+          freelancers and hobbyists.
+        </p>
+        <div
+          class="btn btn-outline-success btn-lg cursor-pointer px-4 initPoppy"
+          href="#"
+        >
+          Show Poppy
+        </div>
+      </div>
+      <div class="product-device shadow-sm d-none d-md-block"></div>
+      <div
+        class="product-device product-device-2 shadow-sm d-none d-md-block"
+      ></div>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div
+        class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+      >
+        <div class="mb-3 mb-0 p-3">
+          <h2 class="display-5">Simple Poppy</h2>
+          <p class="lead">Fully customizable</p>
+        </div>
+        <img
+          class="mw-img"
+          src="./examples/Sample-1.png"
+          alt="Poppy Sample 1"
+        />
+      </div>
+      <div
+        class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+      >
+        <div class="mb-3 p-3">
+          <h2 class="display-5">Customized Poppy</h2>
+          <p class="lead">With Call-to-action</p>
+        </div>
+        <img
+          class="mw-img"
+          src="./examples/Sample-2.png"
+          alt="Poppy Sample 2"
+        />
+      </div>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div
+        class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+      >
+        <div class="mb-3 p-3">
+          <h2 class="display-5">Title-free Poppy</h2>
+          <p class="lead">Grab focus on images</p>
+        </div>
+        <img
+          class="mw-img"
+          src="./examples/Sample-3.png"
+          alt="Poppy Sample 3"
+        />
+      </div>
+      <div
+        class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+      >
+        <div class="mb-3 py-3">
+          <h2 class="display-5">No-image Poppy</h2>
+          <p class="lead">Convey messages with text</p>
+        </div>
+        <img
+          class="mw-img"
+          src="./examples/Sample-4.png"
+          alt="Poppy Sample 4"
+        />
+      </div>
+    </div>
+
+    <footer class="container py-5">
+      <div class="row">
+        <div class="col-12 col-md justify-content-between">
+          Poppy JS
+          <small class="d-block text-muted">Open Source</small>
+          <small class="d-block mb-3 text-muted">(MIT License)</small>
+        </div>
+        <div class="col-6 col-md text-center text-muted">
+          <p>
+            This piece of software is completely free and can be used in any
+            kind of application.
+          </p>
+        </div>
+        <div class="col-6 col-md text-right">
+          <h5>Useful Links</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="text-muted" href="docs.html">Docs</a>
+            </li>
+            <li>
+              <a
+                class="text-muted"
+                href="https://github.com/apvarun/poppyjs"
+                target="_blank"
+                rel="noopener"
+                >Github</a
+              >
+              /
+              <a
+                class="text-muted"
+                href="https://www.npmjs.com/package/poppyjs"
+                target="_blank"
+                rel="noopener"
+                >NPM</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-muted"
+                href="https://apvarun.com"
+                target="_blank"
+                rel="noopener"
+                >Author</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function triggerPoppy() {
+        let pop = new Poppy({
+          title: {
+            text: "Planning a travel?",
+            avatar: "https://randomuser.me/api/portraits/women/31.jpg",
+            color: "#4fc3f7"
+          },
+          content:
+            "<strong>Travel Tips:</strong><br />If you are not a regular traveller, here are some of the tips for travellers.",
+          cta: {
+            text: "Create Your Own Poppy",
+            url: "https://github.com/apvarun/poppyjs",
+            color: "#4fc3f7",
+            newtab: true
+          },
+          coverImage: "https://source.unsplash.com/tZIiLpU0CvI/400x250",
+          position: "bottomRight"
+        });
+        pop.show();
+      }
+      document
+        .querySelector(".initPoppy")
+        .addEventListener("click", triggerPoppy);
+    </script>
+  </body>
+</html>
