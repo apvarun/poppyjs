@@ -27,6 +27,11 @@
       content="Simple, Multipurpose Open Source Pop-in Messages"
     />
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/poppyjs/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/poppyjs/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/poppyjs/icons/favicon-16x16.png">
+    <link rel="manifest" href="/poppyjs/icons/site.webmanifest">
+
     <!-- Bootstrap core CSS -->
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -160,7 +165,7 @@
         freelancers and hobbyists. It is easy to install and make it work.
       </p>
 
-      <h3 class="mt-5 mb-4">Projects with frameworks or ES6+</h3>
+      <h3 class="mt-4 mb-4">Projects with frameworks or ES6+</h3>
       <p>
         Poppy can be installed via NPM using node package manager or with Yarn.
       </p>
@@ -192,6 +197,27 @@
             pop.show();
           </code>
         </pre>
+      </p>
+
+      <h3 class="mt-2 mb-4">Using directly in browser</h3>
+      <p>
+        Add the Poppy script via the jsDelivr CDN and set up your pop-in message.
+      </p>
+      <p>
+        <pre>
+          <code>
+            &lt;script src="https://cdn.jsdelivr.net/npm/poppyjs"&gt;&lt;/script&gt;
+            &lt;script&gt;
+              let pop = new Poppy({
+                title: {
+                  text: "Hello"
+                },
+                coverImage: "IMAGE_URL"
+              });
+              pop.show();
+            &lt;/script&gt;
+          </code>
+          </pre>
       </p>
 
     </div>
