@@ -1,6 +1,6 @@
 {
   "name": "poppyjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple, Multipurpose Open Source Pop-in Messages",
   "main": "./dist/Poppy.min.js",
   "files": [
