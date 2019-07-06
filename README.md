@@ -1,4 +1,4 @@
-![logo](./docs/Poppy-logo.png)
+![logo](https://github.com/apvarun/poppyjs/raw/master/docs/Poppy-logo.png)
 # Poppy
 
 ![NPM](https://img.shields.io/npm/l/poppyjs.svg)
