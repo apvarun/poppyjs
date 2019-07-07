@@ -69,11 +69,13 @@ new Poppy({
         text: String, // CTA text (Default : "")
         url: String, // CTA Link URL (Default : "")
         color: String, // Color Code (Default : "")
-        newtab: Boolean, /// To open the CTA link in a new tab (Default : false)
+        newtab: Boolean, // To open the CTA link in a new tab (Default : false)
+        onclick: Function, // Callback function when CTA button is clicked (Default : () => {})
     },
     coverImage: String, // Cover image URL (Default : "")
     position: String, // Potision (topLeft, topRight, bottomLeft, bottomRight) (Default : "bottomRight")
-    delay: Number // Delay in ms before displaying poppy (Default : 0)
+    delay: Number, // Delay in ms before displaying poppy (Default : 0),
+    closeAfter: Number, // Time in ms after which the poppy should auto-close (Default : null)
 })
 ````
 

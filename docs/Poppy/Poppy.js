@@ -186,11 +186,13 @@ var defaultOptions = Object.freeze({
     text: "",
     url: "",
     color: "#222",
-    newtab: false
+    newtab: false,
+    onclick: function onclick() {}
   },
   coverImage: "",
   position: "bottomRight",
-  delay: 0
+  delay: 0,
+  closeAfter: null
 });
 var Poppy =
 /*#__PURE__*/
@@ -202,6 +204,7 @@ function () {
       title: _babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, defaultOptions.title, {}, options.title),
       cta: _babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_0___default()({}, defaultOptions.cta, {}, options.cta)
     });
+    this.element = null;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Poppy, [{
@@ -330,6 +333,7 @@ function () {
           contentContainer.rel = "noopener noreferrer";
         }
 
+        contentContainer.addEventListener("click", cta.onclick);
         return contentContainer;
       };
 
@@ -358,7 +362,25 @@ function () {
       this.element.appendChild(popup);
       setTimeout(function () {
         document.body.appendChild(_this.element);
+
+        if (_this.state.closeAfter) {
+          if (typeof _this.state.closeAfter !== "number") {
+            console.warn("`closeAfter` should be an interger(in seconds)");
+            return;
+          }
+
+          setTimeout(function () {
+            _this.close();
+          }, _this.state.closeAfter);
+        }
       }, this.state.delay);
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      if (this.element && this.element.parentNode) {
+        this.element.parentNode.removeChild(this.element);
+      }
     }
   }]);
 

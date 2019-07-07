@@ -9,11 +9,13 @@ const defaultOptions = Object.freeze({
     text: "",
     url: "",
     color: "#222",
-    newtab: false
+    newtab: false,
+    onclick: () => {}
   },
   coverImage: "",
   position: "bottomRight",
-  delay: 0
+  delay: 0,
+  closeAfter: null
 });
 
 export class Poppy {
@@ -30,6 +32,7 @@ export class Poppy {
         ...options.cta
       }
     };
+    this.element = null;
   }
   show() {
     const createContainer = position => {
@@ -148,6 +151,7 @@ export class Poppy {
         contentContainer.target = "_blank";
         contentContainer.rel = "noopener noreferrer";
       }
+      contentContainer.addEventListener("click", cta.onclick);
 
       return contentContainer;
     };
@@ -181,7 +185,21 @@ export class Poppy {
     this.element.appendChild(popup);
     setTimeout(() => {
       document.body.appendChild(this.element);
+      if (this.state.closeAfter) {
+        if (typeof this.state.closeAfter !== "number") {
+          console.warn("`closeAfter` should be an interger(in seconds)");
+          return;
+        }
+        setTimeout(() => {
+          this.close();
+        }, this.state.closeAfter);
+      }
     }, this.state.delay);
+  }
+  close() {
+    if (this.element && this.element.parentNode) {
+      this.element.parentNode.removeChild(this.element);
+    }
   }
 }
 
