@@ -34,7 +34,12 @@ export class Poppy {
     };
     this.element = null;
   }
+
   show() {
+    this.element.style.transform = 'translateY(0)';
+  }
+
+  init() {
     const createContainer = position => {
       const container = document.createElement("div");
       container.style.maxWidth = "300px";
@@ -47,6 +52,9 @@ export class Poppy {
       container.style.backgroundColor = "#FFF";
       container.style.fontFamily =
         '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+
+      container.style.transition = '1s all';
+      container.style.transform = 'translateY(calc(100% + 20px))';
       if (position === "topLeft") {
         container.style.top = "0";
         container.style.left = "0";
@@ -63,6 +71,7 @@ export class Poppy {
 
       return container;
     };
+
     const createPopup = options => {
       const title = createTitle(options.title);
       const image = createCoverImage(options.coverImage);
@@ -76,6 +85,7 @@ export class Poppy {
       components.forEach(component => fragment.appendChild(component));
       return fragment;
     };
+
     const createTitle = title => {
       if (!title.text) return null;
       const titleContainer = document.createElement("div");
@@ -108,6 +118,7 @@ export class Poppy {
       titleContainer.appendChild(createCloseIcon());
       return titleContainer;
     };
+
     const createContent = content => {
       if (!content) return null;
       const contentContainer = document.createElement("div");
@@ -117,6 +128,7 @@ export class Poppy {
       contentContainer.innerHTML = content;
       return contentContainer;
     };
+
     const createCoverImage = image => {
       if (!image) return null;
       const imageContainer = document.createElement("div");
@@ -132,6 +144,7 @@ export class Poppy {
       };
       return imageContainer;
     };
+
     const createCTA = cta => {
       if (!cta || !cta.text || !cta.url) return null;
       const contentContainer = document.createElement("a");
@@ -156,6 +169,7 @@ export class Poppy {
 
       return contentContainer;
     };
+
     const createCloseIcon = () => {
       // Close Icon
       const closeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-square">
@@ -169,13 +183,14 @@ export class Poppy {
 
       closeIconContainer.addEventListener("click", () => {
         if (this.element) {
-          this.element.parentNode.removeChild(this.element);
+          this.close();
         }
       });
 
       // OnClick Handler
       return closeIconContainer;
     };
+
     const createFragmentContainer = () => {
       return document.createDocumentFragment();
     };
@@ -197,9 +212,16 @@ export class Poppy {
       }
     }, this.state.delay);
   }
+
   close() {
     if (this.element && this.element.parentNode) {
-      this.element.parentNode.removeChild(this.element);
+      this.element.style.transform = 'translateY(calc(100% + 20px))';
+
+      this.element.addEventListener('transitionend', function closeContainer(event) {
+        if (event.propertyName === "transform") {
+          this.parentNode.removeChild(this);
+        }
+      })
     }
   }
 }
