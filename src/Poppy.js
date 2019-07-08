@@ -37,7 +37,11 @@ export class Poppy {
   }
 
   show() {
-    this.element.style.transform = 'translateY(0)';
+    if (this.state.position === "topLeft" || this.state.position === "topRight") {
+      this.element.style.transform = 'translateY(10%)';
+    } else if (this.state.position === "bottomLeft" || this.state.position === "bottomRight") {
+      container.style.transform = 'translateY(0)';
+    }
   }
 
   init() {
@@ -55,19 +59,22 @@ export class Poppy {
         '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 
       container.style.transition = '1s all';
-      container.style.transform = 'translateY(calc(100% + 20px))';
       if (position === "topLeft") {
         container.style.top = "0";
         container.style.left = "0";
+        container.style.transform = 'translateY(calc(-100% - 20px))';
       } else if (position === "topRight") {
         container.style.top = "0";
         container.style.right = "0";
+        container.style.transform = 'translateY(calc(-100% - 20px))';
       } else if (position === "bottomLeft") {
         container.style.bottom = "0";
         container.style.left = "0";
+        container.style.transform = 'translateY(calc(100% + 20px))';
       } else if (position === "bottomRight") {
         container.style.bottom = "0";
         container.style.right = "0";
+        container.style.transform = 'translateY(calc(100% + 20px))';
       }
 
       return container;
@@ -216,7 +223,16 @@ export class Poppy {
 
   close() {
     if (this.element && this.element.parentNode) {
-      this.element.style.transform = 'translateY(calc(100% + 20px))';
+      console.log(this);
+      if (this.state.position === "topLeft") {
+        this.element.style.transform = 'translateY(calc(-100% - 20px))';
+      } else if (this.state.position === "topRight") {
+        this.element.style.transform = 'translateY(calc(-100% - 20px))';
+      } else if (this.state.position === "bottomLeft") {
+        this.element.style.transform = 'translateY(calc(100% + 20px))';
+      } else if (this.state.position === "bottomRight") {
+        this.element.style.transform = 'translateY(calc(100% + 20px))';
+      }
 
       this.element.addEventListener('transitionend', function closeContainer(event) {
         if (event.propertyName === "transform") {
