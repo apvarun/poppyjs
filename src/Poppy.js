@@ -119,12 +119,13 @@ export class Poppy {
     };
     const createCoverImage = image => {
       if (!image) return null;
-      const imageContainer = document.createElement("img");
+      const imageContainer = document.createElement("div");
       imageContainer.style.width = "100%";
-      imageContainer.style.maxHeight = "150px";
-      imageContainer.style.objectFit = "cover";
+      imageContainer.style.paddingTop = "150px";
+      imageContainer.style.backgroundSize = "cover";
+      imageContainer.style.backgroundPosition = "center";
+      imageContainer.style.backgroundImage = `url(${image})`;
 
-      imageContainer.src = image;
       imageContainer.onerror = () => {
         imageContainer.style.display = "none";
         console.warn("Poppy: Cover image cannot be found.");
