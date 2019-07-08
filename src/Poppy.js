@@ -33,6 +33,7 @@ export class Poppy {
       }
     };
     this.element = null;
+    this.init();
   }
 
   show() {
