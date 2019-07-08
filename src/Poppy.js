@@ -40,7 +40,7 @@ export class Poppy {
     if (this.state.position === "topLeft" || this.state.position === "topRight") {
       this.element.style.transform = 'translateY(10%)';
     } else if (this.state.position === "bottomLeft" || this.state.position === "bottomRight") {
-      container.style.transform = 'translateY(0)';
+      this.element.style.transform = 'translateY(0)';
     }
   }
 
