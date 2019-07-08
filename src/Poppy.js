@@ -123,6 +123,7 @@ export class Poppy {
       imageContainer.style.width = "100%";
       imageContainer.style.paddingTop = "150px";
       imageContainer.style.backgroundSize = "cover";
+      imageContainer.style.backgroundPosition = "center";
       imageContainer.style.backgroundImage = `url(${image})`;
 
       imageContainer.onerror = () => {
