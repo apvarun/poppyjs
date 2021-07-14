@@ -126,7 +126,7 @@
       }
     }
   </style>
-  <script src="./Poppy/Poppy.min.js"></script>
+  <script src="../dist/Poppy.js" async></script>
 </head>
 
 <body>
@@ -258,29 +258,31 @@
   </footer>
 
   <script>
+    let pop = new Poppy({
+      title: {
+        text: "Planning a travel?",
+        avatar: "https://randomuser.me/api/portraits/women/31.jpg",
+        color: "#4fc3f7"
+      },
+      content:
+        "<strong>Travel Tips:</strong><br />If you are not a regular traveller, here are some of the tips for travellers.",
+      cta: {
+        text: "Create Your Own Poppy",
+        url: "https://github.com/apvarun/poppyjs",
+        color: "#4fc3f7",
+        newtab: true,
+        onclick: () => {
+          console.log("CTA Clicked");
+        }
+      },
+      coverImage: "https://source.unsplash.com/tK-Ag9DkuZU/400x250",
+      position: "bottomLeft",
+    });
+
     function triggerPoppy() {
-      let pop = new Poppy({
-        title: {
-          text: "Planning a travel?",
-          avatar: "https://randomuser.me/api/portraits/women/31.jpg",
-          color: "#4fc3f7"
-        },
-        content:
-          "<strong>Travel Tips:</strong><br />If you are not a regular traveller, here are some of the tips for travellers.",
-        cta: {
-          text: "Create Your Own Poppy",
-          url: "https://github.com/apvarun/poppyjs",
-          color: "#4fc3f7",
-          newtab: true,
-          onclick: () => {
-            console.log("CTA Clicked");
-          }
-        },
-        coverImage: "https://source.unsplash.com/tK-Ag9DkuZU/400x250",
-        position: "bottomRight"
-      });
       pop.show();
     }
+
     document
       .querySelector(".initPoppy")
       .addEventListener("click", triggerPoppy);
