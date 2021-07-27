@@ -27,17 +27,17 @@ Simple, Multipurpose Open Source Pop-in Messages
 ## Getting Started
 #### npm
 ````bash
-$ npm install poppy
+$ npm install poppyjs
 
 or
 
-$ yarn add poppy
+$ yarn add poppyjs
 ````
 
 ## Usage
 #### ES6
 ```javascript
-import poppy from 'poppy'
+import poppy from 'poppyjs'
     
 let poppy = new Poppy({
     title: {

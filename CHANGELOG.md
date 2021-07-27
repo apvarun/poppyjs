@@ -2,6 +2,10 @@
 
 All the changes made to Poppy js library.
 
+## [1.1.1] - 2021-07-27
+
+* Fix dependency vulnerabilities
+
 ## [1.1.0] - 2019-07-07
 
 Adds support for:

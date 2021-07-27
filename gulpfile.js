@@ -3,7 +3,6 @@ const gulp = require("gulp");
 const webpack = require('webpack-stream');
 const del = require("del");
 const run = require("run-sequence");
-const TerserPlugin = require("terser-webpack-plugin");
 
 gulp.task("clean", done => {
   del(["./dist", "./docs/Poppy"]);
@@ -32,19 +31,8 @@ const webpackConfig = minimize => ({
     ]
   },
   optimization: {
-    minimizer: minimize
-      ? [
-          new TerserPlugin({
-            cache: true,
-            parallel: true,
-            sourceMap: false,
-            terserOptions: {
-              // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
-            }
-          })
-        ]
-      : []
-  }
+    minimize: minimize,
+  },
 });
 
 gulp.task("script", () => {
